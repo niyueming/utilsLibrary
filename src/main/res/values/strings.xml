@@ -11,4 +11,12 @@
 
 <resources>
     <string name="app_name">utilsLibrary</string>
+
+    <string name="empty_directory">空目录</string>
+    <string name="storage_removed">设备被移除或未挂载</string>
+    <string name="choose_file">选择文件</string>
+    <string name="error_selecting_file">选择文件出错</string>
+    <string name="internal_storage">内部存储</string>
+    <string name="get_upload_file_failed">选择上传文件失败!</string>
+
 </resources>
