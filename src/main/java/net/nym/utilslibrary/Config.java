@@ -20,6 +20,19 @@ package net.nym.utilslibrary;
 public abstract class Config {
     static int DISPLAY_WIDTH;
     static int DISPLAY_HEIGHT;
+    static int DISPLAY_DENSITY;
+
+    public int getDisplayWidth(){
+        return DISPLAY_WIDTH;
+    }
+
+    public int getDisplayHeight(){
+        return DISPLAY_HEIGHT;
+    }
+
+    public float getDisplayDensity(){
+        return DISPLAY_DENSITY;
+    }
 
 
 }
