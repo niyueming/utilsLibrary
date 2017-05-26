@@ -35,4 +35,13 @@ public class SizeUtils {
         }
 
     }
+
+    public static String formatIntSize(long size){
+        if (size/M > 0){
+            return String.format(Locale.getDefault(),"%dM",size/M);
+        }
+
+        return String.format(Locale.getDefault(),"%dK",size/K);
+
+    }
 }
