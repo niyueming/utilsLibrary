@@ -29,4 +29,23 @@ public class IntentUtils {
         intent.setData(data);
         context.startActivity(intent);
     }
+
+    public static void openQQChat(Context context,String qq){
+        try {
+            String url=String.format("mqqwpa://im/chat?chat_type=wpa&uin=%s",qq);
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        }catch (Exception e){
+            Toaster.toaster(context,"请检查是否安装了QQ");
+        }
+    }
+    public static void openWeixinChat(Context context,String weixin){
+        try {
+//            String url=String.format("weixin://addfriend/%s",weixin);
+            String url=String.format("weixin://contacts/profile/%s",weixin);
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        }catch (Exception e){
+            Toaster.toaster(context,"请检查是否安装了微信");
+        }
+
+    }
 }
