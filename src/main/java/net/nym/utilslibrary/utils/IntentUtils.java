@@ -35,6 +35,7 @@ public class IntentUtils {
             String url=String.format("mqqwpa://im/chat?chat_type=wpa&uin=%s",qq);
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }catch (Exception e){
+            e.printStackTrace();
             Toaster.toaster(context,"请检查是否安装了QQ");
         }
     }
@@ -44,6 +45,7 @@ public class IntentUtils {
             String url=String.format("weixin://contacts/profile/%s",weixin);
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }catch (Exception e){
+            e.printStackTrace();
             Toaster.toaster(context,"请检查是否安装了微信");
         }
 
