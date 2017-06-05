@@ -11,6 +11,7 @@
 
 package net.nym.utilslibrary.utils;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -49,5 +50,19 @@ public class IntentUtils {
             Toaster.toaster(context,"请检查是否安装了微信");
         }
 
+    }
+
+    public static void openApp(Context context,String packageName,String cls){
+        try {
+
+            ComponentName componet = new ComponentName(packageName, cls);
+            Intent intent = new Intent();
+            intent.setComponent(componet);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toaster.toaster(context,"请检查是否已安装该APP");
+        }
     }
 }
