@@ -15,6 +15,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.webkit.MimeTypeMap;
+
+import java.io.File;
+import java.util.Locale;
 
 /**
  * @author niyueming
@@ -63,6 +67,19 @@ public class IntentUtils {
         }catch (Exception e){
             e.printStackTrace();
             Toaster.toaster(context,"请检查是否已安装该APP");
+        }
+    }
+
+    public static void openFile(Context context,File file){
+        try {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file),String.format(Locale.getDefault(),"%s/*",FileUtils.getMimeType(file)) );
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toaster.toaster(context,"未搜索到可以打开该文件的app");
         }
     }
 }
