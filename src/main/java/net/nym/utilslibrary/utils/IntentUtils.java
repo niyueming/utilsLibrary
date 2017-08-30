@@ -82,4 +82,16 @@ public class IntentUtils {
             Toaster.toaster(context,"未搜索到可以打开该文件的app");
         }
     }
+
+    public static void openActivity(Context context,String packageName,String cls){
+        try {
+
+            ComponentName componet = new ComponentName(packageName, cls);
+            Intent intent = new Intent();
+            intent.setComponent(componet);
+            context.startActivity(intent);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
