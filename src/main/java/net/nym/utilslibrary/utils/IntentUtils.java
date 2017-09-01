@@ -72,7 +72,7 @@ public class IntentUtils {
         }
     }
 
-    public static void openFile(Context context,File file){
+    public static void openFile(Context context,File file,String authority){
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -80,7 +80,7 @@ public class IntentUtils {
             // 判断版本大于等于7.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 // "cn.com.firstcare.mobile.aph.fileprovider"即是在清单文件中配置的authorities
-                data = FileProvider.getUriForFile(context, "cn.com.firstcare.mobile.aph.fileprovider", file);
+                data = FileProvider.getUriForFile(context, authority, file);
                 // 给目标应用一个临时授权
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             } else {
