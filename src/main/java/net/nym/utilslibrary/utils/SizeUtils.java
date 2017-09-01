@@ -25,11 +25,11 @@ public class SizeUtils {
 
     public static String formatSize(long size){
         if (size/M > 0){
-            return String.format(Locale.getDefault(),"%.3fM",((float)size)/M);
+            return String.format(Locale.getDefault(),"%.1fM",((float)size)/M);
         }
 
         if (size/K > 0){
-            return String.format(Locale.getDefault(),"%.3fK",((float)size)/K);
+            return String.format(Locale.getDefault(),"%.1fK",((float)size)/K);
         }else {
             return String.valueOf("1K");
         }

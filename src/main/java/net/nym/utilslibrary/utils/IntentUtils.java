@@ -15,6 +15,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
 import android.webkit.MimeTypeMap;
 
 import java.io.File;
@@ -74,7 +76,18 @@ public class IntentUtils {
         try {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(file),String.format(Locale.getDefault(),"%s/*",FileUtils.getMimeType(file)) );
+            Uri data;
+            // 判断版本大于等于7.0
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                // "cn.com.firstcare.mobile.aph.fileprovider"即是在清单文件中配置的authorities
+                data = FileProvider.getUriForFile(context, "cn.com.firstcare.mobile.aph.fileprovider", file);
+                // 给目标应用一个临时授权
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            } else {
+                data = Uri.fromFile(file);
+            }
+            intent.setDataAndType(data,FileUtils.getMimeType(file) );
+            Logger.e("getMimeType=%s",FileUtils.getMimeType(file));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }catch (Exception e){
