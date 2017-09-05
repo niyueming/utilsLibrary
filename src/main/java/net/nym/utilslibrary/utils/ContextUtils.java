@@ -315,9 +315,9 @@ public class ContextUtils {
     public static boolean setStatusBarLightMode(Window window, boolean dark){
         boolean result = false;
         if (ContextUtils.isMarshmallowOrLater()){
-            if (SystemUtils.isMIUI()){
+            /**if (SystemUtils.isMIUI()){
                 MIUISetStatusBarLightMode(window,dark);
-            }else if (SystemUtils.isFlyme()){
+            }else */if (SystemUtils.isFlyme()){
                 FlymeSetStatusBarLightMode(window,dark);
             }else {
                 result = MSetStatusBarLightMode(window,dark);
