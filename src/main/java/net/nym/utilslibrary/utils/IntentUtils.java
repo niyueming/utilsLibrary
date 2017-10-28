@@ -37,6 +37,19 @@ public class IntentUtils {
         context.startActivity(intent);
     }
 
+    public static void callView(Context context,Uri uri){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(uri);
+        context.startActivity(intent);
+    }
+
+    public static void callSMS(Context context,String phone){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.parse("sms:" + phone);
+        intent.setData(data);
+        context.startActivity(intent);
+    }
+
     public static void openQQChat(Context context,String qq){
         try {
             String url=String.format("mqqwpa://im/chat?chat_type=wpa&uin=%s",qq);

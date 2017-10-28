@@ -29,7 +29,7 @@ public class Toaster {
     public static void toasterCustom(View view) {
         Toast toast = new Toast(view.getContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(view);
         toast.show();
     }
