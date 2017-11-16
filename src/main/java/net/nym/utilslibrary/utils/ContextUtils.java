@@ -13,6 +13,7 @@ package net.nym.utilslibrary.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -218,6 +219,23 @@ public class ContextUtils {
             e.printStackTrace();
         }
         return apiKey;
+    }
+
+    /**
+     * 剪切板
+     * */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void clipboardManagerCopy(Context context,ClipData clipData)
+    {
+        android.content.ClipboardManager c = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        c.setPrimaryClip(clipData);
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void clipboardManagerCopyHoneycomb(Context context,String message)
+    {
+        android.content.ClipboardManager c = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        c.setPrimaryClip(ClipData.newPlainText(null, message));
     }
 
     /**
