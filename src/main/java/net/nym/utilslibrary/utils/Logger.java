@@ -112,8 +112,12 @@ public class Logger {
 
     public static void println(String msg,Object... args)
     {
-        if(LOG_LEVEL <= Log.DEBUG){
-            System.out.println(String.format(msg, args));
+        try{
+            if(LOG_LEVEL <= Log.DEBUG){
+                System.out.println(String.format(msg, args));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
