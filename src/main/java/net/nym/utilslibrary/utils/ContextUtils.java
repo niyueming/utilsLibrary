@@ -18,6 +18,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -351,5 +352,11 @@ public class ContextUtils {
 
         return result;
 
+    }
+
+    public static int getStatusBarHeight(Activity activity){
+        Rect frame = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+        return frame.top;
     }
 }
